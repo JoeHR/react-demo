@@ -1,0 +1,135 @@
+// @import "compass/css3"; 
+// compass 是 sass 的工具库，compass基于 sass 语法 封装了一系列有用的模块和模板，补充 sass的功能，他们之间的关系，有点像 Javascript
+// 和 jQuery、 Ruby和Rails、 python和Django 的关系
+// compass 采用模块结构，不同模块提供不同的功能。目前，内置五个模块：reset、css3、layout、typograhy、utilities
+// 具体参考 http://www.ruanyifeng.com/blog/2012/11/compass.html http://compass-style.org/reference/compass/
+
+
+
+/* 变量声明
+$n,子菜单数量
+$r,圆形菜单的半径
+*/
+
+$n:10;
+$r:100px;
+
+.menu{
+  // 圆形菜单的居中对齐
+  position:absolute;
+  width:$r*2;
+  height:$r*2;
+  top: 50%;
+  height: 50%;
+  margin-left: -$r;
+  margin-top: -$r;
+
+
+  // 复选框，用来实现单击效果，不需要显示在屏幕上
+  input#btn{
+    display: none;
+  }
+
+  //菜单中间按钮，居中对齐
+  .btn{
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 100;
+  }
+
+  // 菜单中间按钮中间图形绘制
+  &:after{
+    content:"";
+    position: absolute;
+    left: 12px;
+    top: 13px;
+    width: 28px;
+    height: 5px;
+    background-color: #aaa;
+    box-shadow: 0 8px #aaa,0 16px #aaa;
+  }
+}
+
+
+// 子菜单项父对象
+.list{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 1;
+  list-style: none;
+
+  // 子菜单项
+  .item{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all .5s;
+
+    &:hover{
+      cursor: pointer;
+      box-shadow: 0 0 10px #000;
+    }
+  }
+
+  // 子菜单的提示文本，初始不显示
+  .item:after{
+    content:attr(title);
+    position: absolute;
+    top: 0;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 10px;
+    padding: 0 1em;
+    display: none;
+  }
+
+  .item:hover:after{
+    display: block;
+  }
+
+}
+
+
+@for $i from 1 to $n {
+  /* 子菜单项着色 */
+  .list .item:nth-child(#{$i}){
+    background-color: hsl($i/$n*360, 50%, 50%);
+
+    // 子菜单项 hover 变色
+    &:hover,&:after{
+      background-color: hsl($i/$n*360, 50%, 50%);
+    }
+  }
+
+  // 子菜单项位置，实现圆形动画的核心代码，利用compass里的sin、cos函数实现不同菜单项，设置不同的过渡延迟
+  input#btn:checked~.list .item:nth-child(#{$i}){
+    left:$r*cos(($i-1)/$n*360deg);
+    top:$r*sin(($i-1)/$n*360deg);
+    transition-delay:($i-1)*.05s;
+  }
+
+  // 判断是左半边还是右半边，提示文本是左侧还是右侧
+  @if(cos(($i-1)/$n*360deg)>0){
+    .item:nth-child(#{$i}):after{
+      left:50px;
+    }
+  }@else{
+    .item:nth-child(#{$i}):after{
+      right:50px;
+    }
+  }
+}
