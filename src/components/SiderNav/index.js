@@ -48,6 +48,14 @@ const menus = [
     ]
   },
   {
+    title: '数据可视化',
+    icon: 'laptop',
+    key: '/Ksh',
+    subs: [
+      { key: '/Ksh/Map/Loca', title: '高德Loca', icon: '', },
+    ]
+  },
+  {
     title:'React学习',
     icon:'bars',
     key:'React/doc',

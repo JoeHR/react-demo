@@ -16,3 +16,5 @@
 - react-loadable
 
 - compass
+
+- prop-types

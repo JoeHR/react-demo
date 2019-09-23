@@ -6,20 +6,20 @@ export default class circleMenu extends Component {
   render() {
     return (
       <div className="body">
-        <div class="menu">
+        <div className="menu">
           <input type="checkbox" id="btn" />
-          <label class="btn" for="btn"></label>
-          <ul class="list">
-            <li class="item" title="Codepen"></li>
-            <li class="item" title="Codrops"></li>
-            <li class="item" title="Github"></li>
-            <li class="item" title="WDL"></li>
-            <li class="item" title="noupe"></li>
-            <li class="item" title="Magzine"></li>
-            <li class="item" title="Awwwards"></li>
-            <li class="item" title="Tricks"></li>
-            <li class="item" title="WebPlatForm"></li>
-            <li class="item" title="etc."></li>
+          <label className="btn" htmlFor="btn"></label>
+          <ul className="list">
+            <li className="item" title="Codepen"></li>
+            <li className="item" title="Codrops"></li>
+            <li className="item" title="Github"></li>
+            <li className="item" title="WDL"></li>
+            <li className="item" title="noupe"></li>
+            <li className="item" title="Magzine"></li>
+            <li className="item" title="Awwwards"></li>
+            <li className="item" title="Tricks"></li>
+            <li className="item" title="WebPlatForm"></li>
+            <li className="item" title="etc."></li>
           </ul>
         </div>
       </div>

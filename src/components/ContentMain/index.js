@@ -18,17 +18,20 @@ const AntdBasicFormDemo = LoadableComponent(()=>import('../../routes/Antd/Entry/
 
 // sass 
 const loadingAnimation = LoadableComponent(()=>import('../../routes/Sass/Animation/loadingAnimation'))
-// const circleMenu = LoadableComponent(()=>import('../../routes/Sass/Animation/CircleMenu'))
+const circleMenu = LoadableComponent(()=>import('../../routes/Sass/Animation/CircleMenu'))
 const flowers = LoadableComponent(()=>import('../../routes/Sass/Animation/flowers'))
 
 // Css
 const CSSAniCircleLoading = LoadableComponent(()=>import('../../routes/Css/Animation/circleLoading'))
 
+// 可视化
+const KshAMapLoca = LoadableComponent(()=>import('../../routes/Ksh/Map/kshAMapLoca'))
+
 // const AntdStepFromDemo = LoadableComponent(()=>import('../../routes/Antd/Entry/StepFormDemo/index'))
 // const AntdUploadDemo = LoadableComponent(()=>import('../../routes/Antd/Entry/UploadDemo/index'))
 
 // threeJs
-// const ThreeImportDemo = LoadableComponent(()=>import('../../routes/ThreeJs/ImportDeamo/index'))
+const ThreeImportDemo = LoadableComponent(()=>import('../../routes/ThreeJs/ImportDeamo/index'))
 // const ThreeChairDemo = LoadableComponent(()=>import('../../routes/ThreeJs/ChairDemo/index'))
 
 // 一题
@@ -55,15 +58,18 @@ class ContentMain extends React.Component{
 
           {/* sass */}
           <PrivateRoute exact path='/Sass/Animation/loadingAnimation' component={loadingAnimation} />
-          {/* <PrivateRoute exact path='/Sass/Animation/circleMenu' component={circleMenu} /> */}
+          <PrivateRoute exact path='/Sass/Animation/circleMenu' component={circleMenu} />
           <PrivateRoute exact path='/Sass/Animation/flowers' component={flowers} />
 
           {/* CSS */}
           <PrivateRoute exact path='/Css/Animation/circleLoding' component={CSSAniCircleLoading} />
 
+          {/* 可视化 */}
+          <PrivateRoute exact path='/Ksh/Map/Loca' component={KshAMapLoca} />
+
           {/* threeJS */}
-          {/* <PrivateRoute exact path='/threeJs/doc/import' component={ThreeImportDemo} />
-          <PrivateRoute exact path='/threeJs/doc/chair' component={ThreeChairDemo} /> */}
+          <PrivateRoute exact path='/threeJs/doc/import' component={ThreeImportDemo} />
+          {/* <PrivateRoute exact path='/threeJs/doc/chair' component={ThreeChairDemo} /> */}
           {/* <PrivateRoute exact path='/Antd/entry/step-form' component={AntdStepFromDemo}/>
           <PrivateRoute exact path='/Antd/entry/upload' component={AntdUploadDemo}/> */}
 
